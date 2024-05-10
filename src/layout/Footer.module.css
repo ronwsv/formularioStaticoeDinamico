@@ -1,0 +1,77 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.footer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8VH;
+    /* padding: 20px; */
+    background-color: #DB5F08;
+    color: white;
+  }
+  
+  .logo {
+    background-image: url('../img/Double\ Ring@1x-1.0s-200px-200px.svg');
+    background-size: cover;
+    width: 160px;
+    height: 43px;
+  }
+  
+  .social_list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .social_list li {
+    margin-right: 20px;
+  }
+  
+  .social_list li:last-child {
+    margin-right: 0;
+  }
+  
+  .copyright {
+    margin-right: 250px;
+    align-self: last flex-start;
+  }
+  
+  .copyright {
+    text-align:center;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+       flex-direction: column;
+     }
+   
+    .logo {
+       align-content: space-around; 
+       margin-bottom: 0px;
+     }
+   
+    .social_list {
+       margin-top: 50px;
+     }
+   }
