@@ -1,46 +1,43 @@
 import { useForm } from "react-hook-form";
-import { isEmail } from "validator";
-import InputMask from 'react-input-mask';
+import {useState} from 'react';
+import SubmitButton from "../components/layout/SubmitButtom";
+import styles from "../App.css";
+import FiadorForm from './FiadorForm';
+import LocatarioForm from './LocatarioForm';
+// import { useNavigate } from 'react-router-dom';
 
-const Form1 = () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-  
-  
-  
-    const onSubmit = (data) => {
-      alert(JSON.stringify(data));
-    };
-      
-    //  const BotaoAdd = () => {
-    //   const [botaoAtivo, setBotaoAtivo] =
-    //   useState(false);
-  
-    //   const [botaoDesativo, setBotaoDesativo] =
-  
-    //   useState(false);
-    // }
+// FormulariomLocacao
 
-    // // console.log("RENDER");
+function Form1() {
+    const { register, control, handleSubmit, btnText, formData, formState: { errors } } = useForm();
+    const [locatarioForm, setLocatarioForm] = useState({});
+    const [message, setMessage] = useState();
+    const [formLocacao, setFormLocacao] = useState({})
+
+function submit(e){
+    e.preventDefault()
+    // FormData.locacoes.push(formLocacao)
+    // handleSubmit(formData)
+}
+
+function handleChange(e) {
+    setFormLocacao({...formLocacao, [e.target.name]: e.target.value})
+
+}
+    
   
-    // function Layout () {
-   
-    //   const navigate = useNavigate();
-  
-    //   const [exibirConteudo, setExibirConteudo] = useState(false);
     
     return (
       // formulario Locação
       <div className="app-container">
           <div className="form-container">
               <h1>Formulário Locação</h1>
+              <form onSubmit={submit}>
               <div className="form-group">
               <label>Locação</label>
               <select
               className={errors?.locacao && "input-error"}
+              name="locacao"
               defaultValue="0"
               {...register("locacao", { validate: (value) => value !== "0" })}
               >
@@ -59,6 +56,7 @@ const Form1 = () => {
               <input
                   className={errors?.name && "input-error"}
                   format="R$ ###,###.## $"
+                  name="valor"
                   placeholder="Digite o valor + encargos"
                   {...register("name", { required: true })}
                   />
@@ -71,6 +69,7 @@ const Form1 = () => {
               <input
               className={errors?.name && "input-error"}
               type="text"
+              name="garantia"
               placeholder="Digite o tipo de garantia escolhida"
               {...register("garantia", { required: true })}
               />
@@ -83,6 +82,7 @@ const Form1 = () => {
               <input
               className={errors?.prazo && "input-error"}
               type="text"
+              name="prazo"
               placeholder="Digite o tipo de garantia escolhida"
               {...register("prazo", { required: true })}
               />
@@ -95,6 +95,7 @@ const Form1 = () => {
               <input
               className={errors?.condicoes && "input-error"}
               type="text"
+              name="condicoes"
               placeholder="Digite as condições"
               {...register("condicoes", { required: true })}
               />
@@ -107,6 +108,7 @@ const Form1 = () => {
               <input
               className={errors?.inicio && "input-error"}
               type="date"
+              name="inicio"
               placeholder="Inicio do contrato"
               {...register("inicio", { required: true })}
               />
@@ -156,6 +158,7 @@ const Form1 = () => {
               <input
               className={errors?.pet && "input-error"}
               type="text"
+              name="pet"
               placeholder="Digite se possuí Algum animal de estimação"
               {...register("pet", { required: true })}
               />
@@ -163,7 +166,26 @@ const Form1 = () => {
               <p className="error-message">Pet é obrigatório.</p>
               )}
             </div>
+            <div>
+                <LocatarioForm 
+                register={register}
+                errors={errors}
+                control={control}
+                />
+            </div>
+            <div>
+                <FiadorForm 
+                register={register}
+                errors={errors}
+                control={control}
+                />
+            </div>
+            <div className="form-group">
+            <button onClick={() => handleSubmit(submit)()}>Enviar resumo</button>
+            </div>
+            </form>
           </div>
+          
         </div>
     );
 }

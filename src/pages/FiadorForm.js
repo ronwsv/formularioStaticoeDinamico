@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useForm, useFieldArray, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
-import Form1 from '../components/Form1';
+
 
 //conectar os dados ao bd
 
 
-function LocatarioForm() {
+function FiadorForm() {
   const { register, control, handleSubmit, formState: { errors } } = useForm();
   const { fields, append, remove } = useFieldArray({
     control,
@@ -29,8 +29,12 @@ function LocatarioForm() {
   //   //... (lógica de envio do formulário)
   // };
 
-  const addLocatario = () => {
-    append({ locatario: '', nacionalidade: '', estadoCivil: '', nascimento: '', profissao: '', cpf: '', rg: '', celular: '', email: '' });
+  function EnviarDados() {
+
+  }
+
+  const addFiador = () => {
+    append({ fiador: '', estadoCivil: '', nacionalidade: '', profissao: '', nascidoEm: '', cpf: '', rg: '', celular: '', email: '' , enderecoResidencial: '', enderecoDoImovelAfiancado: ''});
   };
 
 
@@ -38,32 +42,23 @@ function LocatarioForm() {
 
             return (
               <div>
-              
-               <Form1 />
                
                   <div className="app-container">
+    
                     <div className="form-container">
+                    <h1>Formulario Fiador</h1>
                       <form  onSubmit={handleSubmit(onSubmit)}>
-                        {/* Loop para renderizar os campos de cada locatário */}
+                        {/* Loop para renderizar os campos de cada fiador */}
                         {fields.map((field, index) => (
                           <div className="form-group" key={field.id}>
-                            <label htmlFor={`locatarios.${index}.locatario`}>Nome do Locatário:</label>
+                            <label htmlFor={`locatarios.${index}.fiador`}>Nome do Fiador:</label>
                             <input
                               type="text"
-                              placeholder="Digite o nome do locatário"
-                              id={`locatarios.${index}.locatario`}
-                              {...register(`locatarios.${index}.locatario`, { required: true })}
+                              placeholder="Digite o nome do Fiador"
+                              id={`locatarios.${index}.fiador`}
+                              {...register(`locatarios.${index}.fiador`, { required: true })}
                             />
-                            {errors.locatarios?.[index]?.locatario && <p className="error-message">Nome do locatário é obrigatório.</p> }
-
-                            <label htmlFor={`locatarios.${index}.nacionalidade`}>Nacionalidade:</label>
-                            <input
-                              type="text"
-                              placeholder="Digite a nacionalidade"
-                              id={`locatarios.${index}.nacionalidade`}
-                              {...register(`locatarios.${index}.nacionalidade`, { required: true })}
-                            />
-                            {errors.locatarios?.[index]?.nacionalidade && <p className="error-message">Nacionalidade é obrigatória.</p>}
+                            {errors.locatarios?.[index]?.fiador && <p className="error-message">Nome do locatário é obrigatório.</p> }
 
                             <label htmlFor={`locatarios.${index}.estadoCivil`}>Estado Civil:</label>
                             <select
@@ -79,6 +74,17 @@ function LocatarioForm() {
 
                             </select>
                             {errors.locatarios?.[index]?.estadoCivil && <p className="error-message">Estado civil é obrigatório.</p>}
+
+                            <label htmlFor={`locatarios.${index}.nacionalidade`}>Nacionalidade:</label>
+                            <input
+                              type="text"
+                              placeholder="Digite a nacionalidade"
+                              id={`locatarios.${index}.nacionalidade`}
+                              {...register(`locatarios.${index}.nacionalidade`, { required: true })}
+                            />
+                            {errors.locatarios?.[index]?.nacionalidade && <p className="error-message">Nacionalidade é obrigatória.</p>}
+
+                            
 
                             <label htmlFor={`locatarios.${index}.nascimento`}>Data de Nascimento:</label>
                             <input
@@ -160,6 +166,26 @@ function LocatarioForm() {
                               )}
                             />
                             {errors.locatarios?.[index]?.email && <p className="error-message">E-mail inválido.</p>}
+
+                            
+                            <label htmlFor={`locatarios.${index}.enderecoResidencial`}>Endereço Residencial:</label>
+                            <input
+                              type="text"
+                              placeholder="Digite o endereço residencial"
+                              id={`locatarios.${index}.enderecoResidencial`}
+                              {...register(`locatarios.${index}.enderecoResidencial`, { required: true })}
+                            />
+                            {errors.locatarios?.[index]?.enderecoResidencial && <p className="error-message">Endereço é obrigatório.</p>}
+
+                            
+                            <label htmlFor={`locatarios.${index}.enderecoDoImovelAfiancado`}>Endereço do imóvel Afiançado:</label>
+                            <input
+                              type="text"
+                              placeholder="Digite o endereço do imóvel"
+                              id={`locatarios.${index}.enderecoDoImovelAfiancado`}
+                              {...register(`locatarios.${index}.enderecoDoImovelAfiancado`, { required: true })}
+                            />
+                            {errors.locatarios?.[index]?.enderecoDoImovelAfiancado && <p className="error-message">Endereço é obrigatório.</p>}
                           
                             {fields.length > 1 && (
                               <button type="button" onClick={() => remove(index)}>
@@ -170,18 +196,18 @@ function LocatarioForm() {
                           
                         ))}
                           <div className="form-group">
-                          <button type="button" onClick={addLocatario}>Adicionar Locatário</button>
+                          <button type="button" onClick={addFiador}>Adicionar Fiador</button>
                           </div>
-                          <div className="form-group">
+                          {/* <div className="form-group">
                           <button type="submit">Enviar Formulário</button>
-
-                          </div>
+                          </div> */}
                       </form>
                   </div>
                 </div>
+
               </div>
 
   );
 }
 
-export default LocatarioForm;
+export default FiadorForm;

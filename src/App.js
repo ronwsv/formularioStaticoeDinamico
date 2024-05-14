@@ -2,12 +2,12 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import PageA from './pages/pageA';
-import PageB from './pages/pageB';
-import PageC from './pages/pageC';
-import Form from './pages/Form';
+import FiadorForm from './pages/FiadorForm';
+import LocatarioForm from './pages/LocatarioForm';
+import Form1 from './pages/Form1';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
-import FormD from './pages/FormD';
+
 
 
 // function PageA() {
@@ -69,12 +69,10 @@ function App() {
     <BrowserRouter>
       <Navbar />
         <Routes>
-          <Route path="/" element={<PageC /> } >
-            {/* <Route path="/a" element={<PageA />} /> */}
-            <Route path="/c" element={<PageC />}/>
-            <Route path="/b" element={<PageB />} />
-            
-            
+          <Route path="/" element={<Form1 /> } >
+          <Route path="/a" element={<LocatarioForm />}/>
+          <Route path="/b" element={<FiadorForm />} />
+          
           </Route>
         </Routes>
         <Footer />
