@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import {useState} from 'react';
 import SubmitButton from "../components/layout/SubmitButtom";
-import styles from "../App.css";
+import './Form1.module.css';
 import FiadorForm from './FiadorForm';
 import LocatarioForm from './LocatarioForm';
 // import { useNavigate } from 'react-router-dom';
 
-// FormulariomLocacao
+// FormularioLocacao
 
 function Form1() {
     const { register, control, handleSubmit, btnText, formData, formState: { errors } } = useForm();
@@ -14,18 +14,17 @@ function Form1() {
     const [message, setMessage] = useState();
     const [formLocacao, setFormLocacao] = useState({})
 
+   
+
 function submit(e){
     e.preventDefault()
-    // FormData.locacoes.push(formLocacao)
-    // handleSubmit(formData)
+    FormData.locacoes(formLocacao)
+    handleSubmit(formData)
+    console.log(formLocacao)
 }
 
-function handleChange(e) {
-    setFormLocacao({...formLocacao, [e.target.name]: e.target.value})
 
-}
-    
-  
+
     
     return (
       // formulario Locação
@@ -39,30 +38,36 @@ function handleChange(e) {
               className={errors?.locacao && "input-error"}
               name="locacao"
               defaultValue="0"
+              
               {...register("locacao", { validate: (value) => value !== "0" })}
               >
               <option value="0">Selecione o tipo de locação...</option>
               <option value="residencial">Residencial</option>
               <option value="comercial">Comercial</option>
               <option value="other">Outros</option>
+              
               </select>
   
               {errors?.locacao?.type === "validate" && (
               <p className="error-message">A profissão é necessária.</p>
               )}
           </div>
+
           <div className="form-group">
               <label>Valor</label>
               <input
                   className={errors?.name && "input-error"}
                   format="R$ ###,###.## $"
                   name="valor"
+                  
+                  
                   placeholder="Digite o valor + encargos"
                   {...register("name", { required: true })}
                   />
               {errors?.name?.type === "required" && (
               <p className="error-message">Valor é obrigatório.</p>
               )}
+              
           </div>
           <div className="form-group">
               <label>Garantia</label>

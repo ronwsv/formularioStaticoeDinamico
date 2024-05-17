@@ -1,12 +1,15 @@
-import './App.css';
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import PageA from './pages/pageA';
 import FiadorForm from './pages/FiadorForm';
 import LocatarioForm from './pages/LocatarioForm';
 import Form1 from './pages/Form1';
+import Login from './components/Login';
+import CreateLogin from './components/CreateLogin';
+import Home from './pages/Home';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
+import './App.css';
+import styles from './pages/Form1.module.css';
 
 
 
@@ -22,22 +25,22 @@ import Footer from './layout/Footer';
 //   )
 // }
 
-function Layout () {
+// function Layout () {
  
-  // const navigate = useNavigate();
+//   const navigate = useNavigate();
 
 
-  // const handleNavigateToA = () => {
-  //   navigate('/a');
-  // };
+//   const handleNavigateToC = () => {
+//     navigate('/c');
+//   };
 
-  // const handleNavigateToB = () => {
-  //   navigate('/b');
-  // };
+//   const handleNavigateToB = () => {
+//     navigate('/b');
+//   };
 
-  // const handleNavigateToC = () => {
-  //   navigate('/c');
-  // };
+//   const handleNavigateToC = () => {
+//     navigate('/c');
+//   };
 
   // return (
   //   <div>
@@ -60,7 +63,7 @@ function Layout () {
   //   </div>
    
   // );
-}
+// }
 
 
 
@@ -69,9 +72,13 @@ function App() {
     <BrowserRouter>
       <Navbar />
         <Routes>
-          <Route path="/" element={<Form1 /> } >
-          <Route path="/a" element={<LocatarioForm />}/>
-          <Route path="/b" element={<FiadorForm />} />
+          <Route path="/" element={<Home  /> } >
+              {/* <Route path="/c" element={<CreateLogin />}/>
+              <Route path="/form1" element={<Form1 />}/>
+
+              <Route path="/locatarioform" element={<LocatarioForm />}/>
+
+              <Route path="/fiadorform" element={<FiadorForm />} /> */}
           
           </Route>
         </Routes>

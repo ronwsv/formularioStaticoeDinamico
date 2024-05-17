@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import {useState} from 'react';
-import SubmitButton from "../components/layout/SubmitButtom";
+import SubmitButton from "../../components/layout/SubmitButtom";
 import styles from "../App.css";
 // import { useNavigate } from 'react-router-dom';
 

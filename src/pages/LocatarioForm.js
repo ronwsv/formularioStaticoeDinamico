@@ -41,25 +41,25 @@ function LocatarioForm() {
 
   }
 
-  fetch(`http://localhost:3001/c/${locatarioForm.id}`,{
-    method: 'PATCH',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(locatarioForm),
-  })
-  .then(resp => resp.json())
-  .then(data => {
-    setLocatarioForm(data)
-    console.log(data)
-  })
-  .catch(err => console.log(err))
+  // fetch(`http://localhost:5001/c/${locatarioForm.id}`,{
+  //   method: 'PATCH',
+  //   headers: {
+  //     'Content-type': 'application/json',
+  //   },
+  //   body: JSON.stringify(locatarioForm),
+  // })
+  // .then(resp => resp.json())
+  // .then(data => {
+  //   setLocatarioForm(data)
+  //   console.log(data)
+  // })
+  // .catch(err => console.log(err))
 
     
-function createForm() {
-  // last form
+// function createForm() {
+//   // last form
 
-}
+// }
 
   const addLocatario = () => {
     append({ locatario: '', nacionalidade: '', estadoCivil: '', nascimento: '', profissao: '', cpf: '', rg: '', celular: '', email: '' });
@@ -223,9 +223,9 @@ function createForm() {
                           /> */}
                           </div>
                           </div>
-                          <div className="form-group">
+                          {/* <div className="form-group">
                           <button type="submit">Enviar Formulário</button>
-                          </div>
+                          </div> */}
                       
                   </div>
                   

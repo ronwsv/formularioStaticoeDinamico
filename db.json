@@ -1,0 +1,20 @@
+{
+  "newuser": [
+    {
+      "id": 1,
+      "username": "",
+      "password": ""
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "ba37"
+    }
+    
+  ]
+}

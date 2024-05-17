@@ -16,7 +16,7 @@ function FiadorForm() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/locatarios', data);
+      const response = await axios.post('http://localhost:5001/locatarios', data);
       console.log(response.data); // Logar a resposta do servidor
       //... (lógica para lidar com a resposta)
     } catch (error) {
@@ -38,7 +38,6 @@ function FiadorForm() {
   };
 
 
-  
 
             return (
               <div>
