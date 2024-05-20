@@ -5,6 +5,7 @@ import './Form1.module.css';
 import FiadorForm from './FiadorForm';
 import LocatarioForm from './LocatarioForm';
 // import { useNavigate } from 'react-router-dom';
+import { create } from 'zustand';
 
 // FormularioLocacao
 
@@ -13,14 +14,14 @@ function Form1() {
     const [locatarioForm, setLocatarioForm] = useState({});
     const [message, setMessage] = useState();
     const [formLocacao, setFormLocacao] = useState({})
-
+    const onsubmit = (data) => console.log(data);
    
 
 function submit(e){
     e.preventDefault()
-    FormData.locacoes(formLocacao)
-    handleSubmit(formData)
-    console.log(formLocacao)
+//     FormData.locacoes(formLocacao)
+//     handleSubmit(formData)
+//     console.log(formLocacao)
 }
 
 
@@ -31,7 +32,7 @@ function submit(e){
       <div className="app-container">
           <div className="form-container">
               <h1>Formulário Locação</h1>
-              <form onSubmit={submit}>
+              <form onSubmit={ handleSubmit(onsubmit) }>
               <div className="form-group">
               <label>Locação</label>
               <select
@@ -57,9 +58,9 @@ function submit(e){
               <label>Valor</label>
               <input
                   className={errors?.name && "input-error"}
+                  type="number"
                   format="R$ ###,###.## $"
                   name="valor"
-                  
                   
                   placeholder="Digite o valor + encargos"
                   {...register("name", { required: true })}
@@ -171,7 +172,7 @@ function submit(e){
               <p className="error-message">Pet é obrigatório.</p>
               )}
             </div>
-            <div>
+            {/* <div>
                 <LocatarioForm 
                 register={register}
                 errors={errors}
@@ -184,9 +185,10 @@ function submit(e){
                 errors={errors}
                 control={control}
                 />
-            </div>
+            </div> */}
             <div className="form-group">
-            <button onClick={() => handleSubmit(submit)()}>Enviar resumo</button>
+            {/* <button onClick={() => handleSubmit(submit)()}>Enviar resumo</button> */}
+            <button type="submit">Enviar teste</button>
             </div>
             </form>
           </div>

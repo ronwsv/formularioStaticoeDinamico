@@ -3,6 +3,8 @@ import React from "react";
 import Login from '../components/Login';
 import Form1 from "./Form1";
 import barra from '../img/Formulario.png';
+import LocatarioForm from "./LocatarioForm";
+import FiadorForm from "./FiadorForm";
 
 function Home() {
     return (
@@ -13,7 +15,9 @@ function Home() {
             </div>
             </div>
             <div>
-            <Form1 />          
+            <Form1 />
+            <LocatarioForm />
+            <FiadorForm />         
             </div>
         </div>
     )

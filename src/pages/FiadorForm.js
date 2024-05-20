@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 //conectar os dados ao bd
@@ -9,29 +9,34 @@ import axios from 'axios';
 
 function FiadorForm() {
   const { register, control, handleSubmit, formState: { errors } } = useForm();
+  const onsubmit = (data) => console.log(data);
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'locatarios',
   });
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:5001/locatarios', data);
-      console.log(response.data); // Logar a resposta do servidor
-      //... (lógica para lidar com a resposta)
-    } catch (error) {
-      console.error(error); // Lidar com erros
-    }
-  };//fechamento da onsubmit
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axios.post('http://localhost:5001/locatarios', data);
+  //     console.log(response.data); // Logar a resposta do servidor
+  //     //... (lógica para lidar com a resposta)
+  //   } catch (error) {
+  //     console.error(error); // Lidar com erros
+  //   }
+  // };//fechamento da onsubmit
 
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  //   //... (lógica de envio do formulário)
-  // };
+  function submit(e){
+    e.preventDefault()
+//     FormData.locacoes(formLocacao)
+//     handleSubmit(formData)
+//     console.log(formLocacao)
+}
+    //... (lógica de envio do formulário)
+  ;
 
-  function EnviarDados() {
+  // function EnviarDados() {
 
-  }
+  // }
 
   const addFiador = () => {
     append({ fiador: '', estadoCivil: '', nacionalidade: '', profissao: '', nascidoEm: '', cpf: '', rg: '', celular: '', email: '' , enderecoResidencial: '', enderecoDoImovelAfiancado: ''});
@@ -46,7 +51,7 @@ function FiadorForm() {
     
                     <div className="form-container">
                     <h1>Formulario Fiador</h1>
-                      <form  onSubmit={handleSubmit(onSubmit)}>
+                      <form  onSubmit={ handleSubmit(onsubmit) }>
                         {/* Loop para renderizar os campos de cada fiador */}
                         {fields.map((field, index) => (
                           <div className="form-group" key={field.id}>
@@ -111,8 +116,8 @@ function FiadorForm() {
                                 <InputMask
                                   mask="999.999.999-99"
                                   placeholder="Digite o CPF"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                 />
                               )}
                             />
@@ -127,8 +132,8 @@ function FiadorForm() {
                                 <InputMask
                                   mask="99.999.999-9"
                                   placeholder="Digite o RG"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                 />
                               )}
                             />
@@ -143,8 +148,8 @@ function FiadorForm() {
                                 <InputMask
                                   mask="(99) 9 9999-9999"
                                   placeholder="Digite o Celular"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                 />
                               )}
                             />
@@ -159,8 +164,8 @@ function FiadorForm() {
                               <input 
                               placeholder="Digite o e-mail"
                               type="email" 
-                              value={field.value}
-                              onChange={field.onChange} 
+                              // value={field.value}
+                              // onChange={field.onChange} 
                               />
                               )}
                             />
@@ -200,6 +205,10 @@ function FiadorForm() {
                           {/* <div className="form-group">
                           <button type="submit">Enviar Formulário</button>
                           </div> */}
+                          <div className="form-group">
+                          {/* <button onClick={() => handleSubmit(submit)()}>Enviar resumo</button> */}
+                          <button type="submit">Enviar teste</button>
+                          </div> 
                       </form>
                   </div>
                 </div>

@@ -1,0 +1,47 @@
+
+import React from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
+import { useZustand } from 'zustand';
+
+const MyForm = () => {
+  const { register, control, handleSubmit } = useForm();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'tickets', // Nome do campo de array
+  });
+
+  // Zustand state para compartilhar dados entre componentes
+  const useSharedState = useZustand(state => state);
+
+  const onSubmit = data => {
+    // Salvar os dados no Zustand
+    useSharedState.setState({ tickets: data.tickets });
+    console.log('Dados do formulário:', data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {fields.map((field, index) => (
+        <div key={field.id}>
+          <input
+            {...register(`tickets.${index}.name`)}
+            placeholder="Nome"
+          />
+          <input
+            {...register(`tickets.${index}.email`)}
+            placeholder="E-mail"
+          />
+          <button type="button" onClick={() => remove(index)}>
+            Remover
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={() => append({ name: '', email: '' })}>
+        Adicionar Ticket
+      </button>
+      <button type="submit">Enviar</button>
+    </form>
+  );
+};
+
+export default MyForm;

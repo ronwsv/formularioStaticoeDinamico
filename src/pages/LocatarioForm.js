@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import axios from 'axios';
 import Form1 from "./Form1";
 import PageD from "./FiadorForm";
 
@@ -12,6 +11,7 @@ function LocatarioForm() {
   const { register, control, handleSubmit, formState: { errors } } = useForm();
   const [locatarioForm, setLocatarioForm] = useState({});
   const [message, setMessage] = useState();
+  const onsubmit = (data) => console.log(data);
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'locatarios',
@@ -27,19 +27,21 @@ function LocatarioForm() {
   //   }
   // };//fechamento da onsubmit
 
-  function submit() {}
+  // function submit() {}
 
-  function handleChange(e){}
+  // function handleChange(e){}
 
-  const onSubmit = (data) => {
-    console.log("Dados enviados:", data);
-    //... (lógica de envio do formulário)
-  };
+  // const onSubmit = (data) => {
+  //   console.log("Dados enviados:", data);
+  //   //... (lógica de envio do formulário)
+  // };
 
-  function editPost(locatarioForm) {
-    console.log(locatarioForm)
+  // const onsubmit = (data) => console.log(data);
 
-  }
+  // function editPost(locatarioForm) {
+  //   console.log(locatarioForm)
+
+  // }
 
   // fetch(`http://localhost:5001/c/${locatarioForm.id}`,{
   //   method: 'PATCH',
@@ -55,7 +57,12 @@ function LocatarioForm() {
   // })
   // .catch(err => console.log(err))
 
-    
+  function submit(e){
+    e.preventDefault()
+//     FormData.locacoes(formLocacao)
+//     handleSubmit(formData)
+//     console.log(formLocacao)
+}
 // function createForm() {
 //   // last form
 
@@ -67,7 +74,7 @@ function LocatarioForm() {
   
 
             return (
-              <form  onSubmit={handleSubmit(onSubmit)}>
+              
               <div>
                {/* <Form1 
                register={register}
@@ -76,7 +83,7 @@ function LocatarioForm() {
                /> */}
                
                   <div className="app-container">
-                    
+                    <form onSubmit={ handleSubmit(onsubmit) }>
                     <div className="form-container">
                     <h1>Formulario Locatário</h1>
                       
@@ -89,7 +96,7 @@ function LocatarioForm() {
                               placeholder="Digite o nome do locatário"
                               id={`locatarios.${index}.locatario`}
                               {...register(`locatarios.${index}.locatario`, { required: true })}
-                              handleOnChange={handleChange}
+                              // handleOnChange={handleChange}
                             />
                             {errors.locatarios?.[index]?.locatario && <p className="error-message">Nome do locatário é obrigatório.</p> }
 
@@ -99,7 +106,7 @@ function LocatarioForm() {
                               placeholder="Digite a nacionalidade"
                               id={`locatarios.${index}.nacionalidade`}
                               {...register(`locatarios.${index}.nacionalidade`, { required: true })}
-                              handleOnChange={handleChange}
+                              // handleOnChange={handleChange}
                             />
                             {errors.locatarios?.[index]?.nacionalidade && <p className="error-message">Nacionalidade é obrigatória.</p>}
 
@@ -107,7 +114,7 @@ function LocatarioForm() {
                             <select
                               id={`locatarios.${index}.estadoCivil`}
                               {...register(`locatarios.${index}.estadoCivil`, { required: true })}
-                              handleOnChange={handleChange}
+                              // handleOnChange={handleChange}
                             >
                               <option value="">Selecione uma opção</option>
                               <option value="casado">Casado</option>
@@ -133,7 +140,7 @@ function LocatarioForm() {
                               placeholder="Digite a profissão"
                               id={`locatarios.${index}.profissao`}
                               {...register(`locatarios.${index}.profissao`, { required: true })}
-                              handleOnChange={handleChange}
+                              // handleOnChange={handleChange}
                             />
                             {errors.locatarios?.[index]?.profissao && <p className="error-message">Profissão é obrigatória.</p>}
 
@@ -148,7 +155,7 @@ function LocatarioForm() {
                                   placeholder="Digite o CPF"
                                   value={field.value}
                                   onChange={field.onChange}
-                                  handleOnChange={handleChange}
+                                  // handleOnChange={handleChange}
                                 />
                               )}
                             />
@@ -165,7 +172,7 @@ function LocatarioForm() {
                                   placeholder="Digite o RG"
                                   value={field.value}
                                   onChange={field.onChange}
-                                  handleOnChange={handleChange}
+                                  // handleOnChange={handleChange}
                                 />
                               )}
                             />
@@ -182,7 +189,7 @@ function LocatarioForm() {
                                   placeholder="Digite o Celular"
                                   value={field.value}
                                   onChange={field.onChange}
-                                  handleOnChange={handleChange}
+                                  // handleOnChange={handleChange}
                                 />
                               )}
                             />
@@ -199,7 +206,8 @@ function LocatarioForm() {
                               type="email" 
                               value={field.value}
                               onChange={field.onChange}
-                              handleOnChange={handleChange} 
+                              // handleOnChange={handleChange} 
+
                               />
                               )}
                             />
@@ -215,24 +223,21 @@ function LocatarioForm() {
                         ))}
                           <div className="form-group">
                           <button type="button" onClick={addLocatario}>Adicionar Locatário</button>
-                          {/* <div>
-                          <PageD 
-                          register={register}
-                          errors={errors}
-                          control={control}
-                          /> */}
                           </div>
-                          </div>
-                          {/* <div className="form-group">
+                          <div className="form-group">
                           <button type="submit">Enviar Formulário</button>
-                          </div> */}
-                      
+
+                          </div>
+                          </div>
+                          
+                          {/* <button type="submit">Enviar teste</button> */}
+                          </form>
                   </div>
                   
                 </div>
                 
               
-              </form>
+              
   );
 }
 
