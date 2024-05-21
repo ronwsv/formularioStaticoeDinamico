@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import {useState} from 'react';
-import SubmitButton from "../components/layout/SubmitButtom";
+// import SubmitButton from "../components/layout/SubmitButtom";
 import './Form1.module.css';
 import FiadorForm from './FiadorForm';
 import LocatarioForm from './LocatarioForm';
 // import { useNavigate } from 'react-router-dom';
-import { create } from 'zustand';
+// import { create } from 'zustand';
 
 // FormularioLocacao
 
@@ -17,12 +17,12 @@ function Form1() {
     const onsubmit = (data) => console.log(data);
    
 
-function submit(e){
-    e.preventDefault()
+// function submit(e){
+    // e.preventDefault()
 //     FormData.locacoes(formLocacao)
 //     handleSubmit(formData)
 //     console.log(formLocacao)
-}
+// }
 
 
 

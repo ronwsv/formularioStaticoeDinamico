@@ -153,8 +153,9 @@ function LocatarioForm() {
                                 <InputMask
                                   mask="999.999.999-99"
                                   placeholder="Digite o CPF"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  {...register(`locatarios.${index}.cpf`, {required: true })}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                   // handleOnChange={handleChange}
                                 />
                               )}
@@ -170,8 +171,9 @@ function LocatarioForm() {
                                 <InputMask
                                   mask="99.999.999-9"
                                   placeholder="Digite o RG"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  {...register(`locatarios.${index}.rg`, {required: true })}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                   // handleOnChange={handleChange}
                                 />
                               )}
@@ -187,8 +189,9 @@ function LocatarioForm() {
                                 <InputMask
                                   mask="(99) 9 9999-9999"
                                   placeholder="Digite o Celular"
-                                  value={field.value}
-                                  onChange={field.onChange}
+                                  {...register(`locatarios.${index}.celular`, {required: true })}
+                                  // value={field.value}
+                                  // onChange={field.onChange}
                                   // handleOnChange={handleChange}
                                 />
                               )}
@@ -199,13 +202,15 @@ function LocatarioForm() {
                             <Controller
                               name={`locatarios.${index}.email`}
                               control={control}
-                              rules={{ required: true, pattern: /^\S+@\S+$/i }}
+                              rules={{ required: true, pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+                            }}
                               render={({ field }) => (
                               <input 
                               placeholder="Digite o e-mail"
                               type="email" 
-                              value={field.value}
-                              onChange={field.onChange}
+                              {...register(`locatarios.${index}.email`, {required: true })}
+                              // value={field.value}
+                              // onChange={field.onChange}
                               // handleOnChange={handleChange} 
 
                               />

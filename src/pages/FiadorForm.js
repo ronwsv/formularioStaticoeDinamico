@@ -25,14 +25,9 @@ function FiadorForm() {
   //   }
   // };//fechamento da onsubmit
 
-  function submit(e){
-    e.preventDefault()
-//     FormData.locacoes(formLocacao)
-//     handleSubmit(formData)
-//     console.log(formLocacao)
-}
+
     //... (lógica de envio do formulário)
-  ;
+  // };
 
   // function EnviarDados() {
 
@@ -212,8 +207,8 @@ function FiadorForm() {
                       </form>
                   </div>
                 </div>
-
-              </div>
+                </div>  
+             
 
   );
 }
